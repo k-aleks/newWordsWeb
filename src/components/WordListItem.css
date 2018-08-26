@@ -1,0 +1,14 @@
+.wordListItem {
+  margin-top: 21px;
+  margin-left: 90px;
+  display: flex;
+  flex-direction: column;
+}
+
+.wordListItem a {
+  font-size: large;
+  cursor: pointer;
+}
+.wordListItem span {
+  margin-top: 9px;
+}
