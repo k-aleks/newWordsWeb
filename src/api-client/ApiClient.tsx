@@ -5,10 +5,10 @@ export interface IWordDefinitionResponse {
 
 export class ApiClient {
     public async getWordDefinition(wordToLookup: string): Promise<IWordDefinitionResponse> {
-        await sleepAsync(2000);
+        await sleepAsync(1000);
         return {
             word: wordToLookup,
-            definition: "This is a word definition mock"
+            definition: "This is a word definition mock for '" + wordToLookup + "'"
         };
     }
 }
