@@ -11,7 +11,7 @@ export interface IWordsListItemProps {
 export const WordsListItem: React.SFC<IWordsListItemProps> = props => (
     <div className="wordListItem">
         <a onClick={props.onClick}>{props.word}</a>
-        {props.definition && <span>props.definition</span>}
+        {props.definition && <span>{props.definition}</span>}
         {props.isFetching && <span>loading...</span> }
     </div>
 );
