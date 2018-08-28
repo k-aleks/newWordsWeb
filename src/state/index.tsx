@@ -1,7 +1,3 @@
-import { List, Map } from "immutable";
+import { IState, TestState } from "./State";
 
-export interface IState {
-    selectedWordIndex: number | undefined;
-    words: List<string>;
-    definitions: Map<string, string>;
-}
+export {IState, TestState}

@@ -7,16 +7,23 @@ export function mapStateToProps(state: IState) {
     const selectedWord = state.selectedWordIndex! >= 0 ? state.words.get(state.selectedWordIndex!) : undefined;
     const wordsInList = Array<{
         word: string;
+        isFetching?: boolean;
         definition?: string;
     }>();
-    state.words.forEach(w => {
-        const def =
-            w === selectedWord && selectedWord
-                ? state.definitions.get(selectedWord, "requesting the definition...")
-                : undefined;
+    state.words.forEach(word => {
+        let definition;
+        let isFetching;
+        if (selectedWord && word === selectedWord) {
+            const definitionInState = state.definitions.get(selectedWord);
+            if (definitionInState) {
+                definition = definitionInState.definition;
+                isFetching = definitionInState.isFetching;
+            }
+        }
         wordsInList.push({
-            word: w!,
-            definition: def
+            "word": word!,
+            "isFetching": isFetching,
+            "definition": definition
         });
     });
     return {
@@ -26,7 +33,7 @@ export function mapStateToProps(state: IState) {
 
 export function mapDispatchToProps(dispatch: any) {
     return {
-        onItemClick: (index: number) => dispatch(actions.selectListItem(index))
+        onItemClick: (index: number) => dispatch(actions.showWordDefinitionAsync(index))
     };
 }
 
